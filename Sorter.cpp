@@ -127,4 +127,15 @@ vector<int>* Sorter::insertionSort(vector<int>* unsorted){
   return sorted;
 }
 
+bool Sorter::isUnique1( int A[], int first, int last )
+{
+    if( first >= last )
+        return true;
+    if( !isUnique1( A, first, last-1 ) )
+        return false;
+    if( !isUnique1( A, first+1, last ) )
+        return false;
+    return( A[first] != A[last] );
+}
+
 
