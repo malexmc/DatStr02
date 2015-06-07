@@ -6,24 +6,23 @@
 using namespace std;
 
 //Bubble sorts an int vector in ascending order
-vector<int>* Sorter::bubbleSort(vector<int>* sorter){
-    for(unsigned int ii = 0; ii < sorter->size(); ii++){
+void Sorter::bubbleSort(int* sorter, int first, int last ){
+    for(int ii = first; ii < last; ii++){
         bool swapped = false;
-        for(unsigned int jj = 0; jj < sorter->size() - ii; jj++){
-            if((jj+1 < sorter->size())){
-                if (sorter->at(jj) > sorter->at(jj+1)){
-                    int temp = sorter->at(jj+1);
-                    sorter->at(jj+1) = sorter->at(jj);
-                    sorter->at(jj) = temp;
+        for(int jj = first; jj < last - ii; jj++){
+            if((jj+1 < last)){
+                if (*(sorter+jj) > *(sorter+jj+1)){
+                    int temp = *(sorter+jj+1);
+                    *(sorter+jj+1) = *(sorter+jj);
+                    *(sorter+jj) = temp;
                     swapped = true;
                 }
             }
         }
         if (!swapped){
-            return sorter;
+            return;
         }
     }
-    return sorter;
 }
 
 //tests to see if an int vector is sorted in ascending order
@@ -137,5 +136,34 @@ bool Sorter::isUnique1( int A[], int first, int last )
         return false;
     return( A[first] != A[last] );
 }
+
+bool Sorter::isUnique2( int A[], int first, int last )
+{
+    if( first >= last )
+        return true;
+    for( int i = first; i < last; i++ )
+    {
+        for( int j = i+1; j <= last; j++ )
+        {
+            if( A[i] == A[j] )
+                return false;
+        }
+    }
+    return true;
+}
+
+bool Sorter::isUnique3( int A[], int first, int last )
+{
+    if( first >= last )
+        return true;
+    bubbleSort( &A[0], first, last);
+    for(int i = first; i < last; i++)
+    {
+        if(A[i] == A[i+1])
+            return false;
+    }
+    return false;
+}
+
 
 
