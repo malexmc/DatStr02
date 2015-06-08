@@ -7,13 +7,9 @@
 #include <time.h>
 
 #include "TestSets.h"
+#include "Sorter.h"
 
 using namespace std;
-
-// isUnique algorithms
-bool isUnique1(int A[], int first, int last);
-bool isUnique2(int A[], int first, int last);
-bool isUnique3(int A[], int first, int last);
 
 // utility methods
 void printTableRow(int n, double time1, double time2, double time3);
@@ -61,19 +57,19 @@ int main()
 		// isUnique1()
 		clock_t t1;
 		t1 = clock();
-		isUnique1(set, 0, size);
+		Sorter::isUnique1(set, 0, size);
 		t1 = clock() - t1;
 
 		// isUnique2()
 		clock_t t2;
 		t2 = clock();
-		isUnique2(set, 0, size);
+		Sorter::isUnique2(set, 0, size);
 		t2 = clock() - t2;
 
 		// isUnique3()
 		clock_t t3;
 		t3 = clock();
-		isUnique3(set, 0, size);
+		Sorter::isUnique3(set, 0, size);
 		t3 = clock() - t3;
 
 		printTableRow(size, t1, t2, t3);
@@ -94,24 +90,3 @@ void printTableRow(int n, double time1, double time2, double time3)
 	cout << setw(9) << time2 << " | ";
 	cout << setw(9) << time3 << endl;
 }
-
-// <will>
-// The following three functions are simply placeholders
-bool isUnique1(int A[], int first, int last)
-{
-	for (int x = 0; x < last * 10000; x++);
-	return true;
-}
-
-bool isUnique2(int A[], int first, int last)
-{
-	for (int x = 0; x < last * 100000; x++);
-	return true;
-}
-
-bool isUnique3(int A[], int first, int last)
-{
-	for (int x = 0; x < last * 1000000; x++);
-	return true;
-}
-

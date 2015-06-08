@@ -1,0 +1,20 @@
+#ifndef SORTFUNCTIONS_H
+#define SORTFUNCTIONS_H
+
+#include <vector>
+
+using namespace std;
+
+class sortFunctions{
+public:
+    static vector<int>* mergeSort(vector<int>*);
+    static vector<int>* insertionSort(vector<int>*);
+    static vector<int>* bubbleSort(vector<int>*);
+    
+private:
+    static bool isSorted(vector<int>*);
+    static vector<int>* merge(vector<int>*, vector<int>*);  
+    sortFunctions(){};
+};
+
+#endif //SORTFUNCTIONS_H
