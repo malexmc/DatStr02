@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall -ggdb -I.
 LDFLAGS=
-SOURCES=SetEfficiency.cpp Sorter.cpp TestSets.cpp
+SOURCES=SetEfficiency.cpp Sorter.cpp
 EXECUTABLE=execute.out
 
 TESTS = IntVec_test.h
