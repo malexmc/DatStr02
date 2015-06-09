@@ -1,7 +1,20 @@
-// SetEfficiency.cpp : Defines the entry point for the console application.
-//
-
-//#include "stdafx.h"
+/*
+Authors: William Hauber
+         John Mikolay
+         Matthew McClellan
+Course Title: Data Structures
+Course Number: CS2028
+Instructor: Anca Ralescu
+TA: Suryadip Chakraborty
+Abstract: Assignment 2 - SetEfficiency.cpp takes three set uniqueness testing algorithms and records their
+running time with sets of various lengths. The sets begin at length 4 and double in length each iteration.
+When any given algorithm surpasses 1 minute in execution time for a given set, that algorithm is not run
+for any larger sets. The program terminates when all algorithms have surpassed 1 minute execution time.
+Preconditions: 
+Postconditions:
+Credits:
+	Dr. Paul Talaga for his Makefile
+*/
 
 #include <algorithm>
 #include <iostream>
@@ -33,7 +46,7 @@ struct IsUniqueMethod
 int main()
 {
 	// <will>
-	// Code to test the various algorithms. Change testAlgorithms to false if not desired
+	// Code to test the various sorting algorithms. Change testSortAlgorithms to false if not desired
 	bool testSortAlgorithms = false;
 	if (testSortAlgorithms)
 	{
@@ -49,6 +62,8 @@ int main()
 		return 0;
 	}
 
+	// <will>
+	// Code to test the various isUnique algorithms. Change testIsUniqueAlgorithms to false if not desired
 	bool testIsUniqueAlgorithms = false;
 	if (testIsUniqueAlgorithms)
 	{
@@ -100,15 +115,6 @@ int main()
 		vector<int>* shuffledSet = generateShuffledSet(static_cast<int>(setLength));
 
 		// <will>
-		// Print the set to the console (for debugging purposes)
-		/*cout << endl;
-		for (unsigned int ii = 0; ii < shuffledSet->size(); ii++)
-		{
-			cout << (*shuffledSet)[ii] << " ";
-		}
-		cout << endl;*/
-
-		// <will>
 		// Loop through all functions and print the timing data
 		cout << static_cast<int>(setLength);
 		for (int ii = 0; ii < numFunctions; ii++)
@@ -120,6 +126,7 @@ int main()
 				clock_t t = clock();
 				functions[ii].function(shuffledSet, 0, static_cast<int>(setLength) - 1);
 				t = clock() - t;
+				t *= 1000 / CLOCKS_PER_SEC;
 
 				// <will>
 				// Print the time to run, and adjust the flag if necessary
@@ -180,7 +187,7 @@ vector<clock_t> testSorts(vector<int>* set)
 		clock_t t = clock();
 		vector<int>* sorted = sorts[ii](set);
 		t = clock() - t;
-		results[ii] = t;
+		results[ii] = t * 1000 / CLOCKS_PER_SEC;
 
 		delete sorted;
 	}
@@ -203,7 +210,7 @@ vector<clock_t> testIsUniques(vector<int>* set)
 		clock_t t = clock();
 		algorithms[ii](set, 0, set->size() - 1);
 		t = clock() - t;
-		results[ii] = t;
+		results[ii] = t * 1000 / CLOCKS_PER_SEC;
 	}
 
 	return results;
