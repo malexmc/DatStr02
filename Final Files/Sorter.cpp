@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include <unistd.h>
 #include "Sorter.h"
 
 using namespace std;
@@ -132,7 +131,6 @@ vector<int>* Sorter::insertionSort(vector<int>* unsorted){
 
 bool Sorter::isUnique1( vector<int>* A, int first, int last )
 {
-
     //cout << "comparing " << first << " and  " << last << endl;
     if( first >= last )
         return true;
