@@ -21,7 +21,6 @@ Credits:
 #include <math.h>
 #include <time.h>
 #include <vector>
-#include <unistd.h>
 
 #include "Sorter.h"
 
@@ -211,7 +210,7 @@ vector<clock_t> testIsUniques(vector<int>* set)
 		clock_t t = clock();
 		algorithms[ii](set, 0, set->size() - 1);
 		t = clock() - t;
-		results[ii] = t * 1000 / CLOCKS_PER_SEC;
+		results[ii] = t * 1000.0 / CLOCKS_PER_SEC;
 	}
 
 	return results;
