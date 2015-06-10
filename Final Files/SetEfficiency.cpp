@@ -21,6 +21,7 @@ Credits:
 #include <math.h>
 #include <time.h>
 #include <vector>
+#include <unistd.h>
 
 #include "Sorter.h"
 
@@ -126,7 +127,7 @@ int main()
 				clock_t t = clock();
 				functions[ii].function(shuffledSet, 0, static_cast<int>(setLength) - 1);
 				t = clock() - t;
-				t *= 1000 / CLOCKS_PER_SEC;
+				t *= 1000.0 / CLOCKS_PER_SEC;
 
 				// <will>
 				// Print the time to run, and adjust the flag if necessary
@@ -187,7 +188,7 @@ vector<clock_t> testSorts(vector<int>* set)
 		clock_t t = clock();
 		vector<int>* sorted = sorts[ii](set);
 		t = clock() - t;
-		results[ii] = t * 1000 / CLOCKS_PER_SEC;
+		results[ii] = t * 1000.0 / CLOCKS_PER_SEC;
 
 		delete sorted;
 	}
